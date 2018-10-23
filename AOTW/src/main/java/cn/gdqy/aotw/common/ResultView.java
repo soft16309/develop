@@ -1,4 +1,4 @@
-package cn.gdqy.aotw.utils;
+package cn.gdqy.aotw.common;
 
 import java.util.HashMap;
 import java.util.Map;
