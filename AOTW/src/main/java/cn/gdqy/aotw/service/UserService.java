@@ -1,8 +1,9 @@
 package cn.gdqy.aotw.service;
 
+import cn.gdqy.aotw.common.ResultView;
 import cn.gdqy.aotw.pojo.User;
 
 public interface UserService {
-	User findUser(String username);
-	User findUser(String username, String password);
+	ResultView login(String userName, String password);
+	ResultView register(User user);
 }

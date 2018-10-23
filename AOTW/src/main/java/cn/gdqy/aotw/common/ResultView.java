@@ -4,12 +4,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ResultView {
+	public final static String SUCCESS = "Y";
+	public final static String ERROR = "N";
 	private String isOk;
 	private String msg;
 	private Map<String, Object> data;
 	
 	public ResultView() {
-		this.isOk = "Y";
+		this.isOk = SUCCESS;
 		this.data = new HashMap<String, Object>();
 	}
 	

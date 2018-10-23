@@ -5,7 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import cn.gdqy.aotw.pojo.User;
+import cn.gdqy.aotw.common.ResultView;
 import cn.gdqy.aotw.service.UserService;
 
 @Controller
@@ -17,8 +17,8 @@ public class UserController {
 	
 	@ResponseBody
 	@RequestMapping("login")
-	public User login(String userName, String password) {
-		return userService.findUser(userName, password);
+	public ResultView login(String userName, String password) {
+		return userService.login(userName, password);
 	}
 	
 }
