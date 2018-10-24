@@ -1,5 +1,6 @@
 package cn.gdqy.aotw.utils;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -10,6 +11,11 @@ import cn.gdqy.aotw.pojo.User;
 
 public class WebHelper {
 
+	public static ServletContext getServletContext() {
+		 HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+		 return request.getSession().getServletContext();
+	}
+	
 	public static HttpSession getSession() {
 		 HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
 		 return request.getSession();

@@ -3,7 +3,7 @@
 <mapper namespace="cn.gdqy.aotw.mapper.GroupmemberMapper" >
   <resultMap id="BaseResultMap" type="cn.gdqy.aotw.pojo.GroupmemberKey" >
     <id column="userName" property="username" jdbcType="VARCHAR" />
-    <id column="group_id" property="groupId" jdbcType="INTEGER" />
+    <id column="groupId" property="groupid" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -64,7 +64,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    userName, group_id
+    userName, groupId
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="cn.gdqy.aotw.pojo.GroupmemberExample" >
     select
@@ -83,7 +83,7 @@
   <delete id="deleteByPrimaryKey" parameterType="cn.gdqy.aotw.pojo.GroupmemberKey" >
     delete from groupmember
     where userName = #{username,jdbcType=VARCHAR}
-      and group_id = #{groupId,jdbcType=INTEGER}
+      and groupId = #{groupid,jdbcType=INTEGER}
   </delete>
   <delete id="deleteByExample" parameterType="cn.gdqy.aotw.pojo.GroupmemberExample" >
     delete from groupmember
@@ -92,8 +92,8 @@
     </if>
   </delete>
   <insert id="insert" parameterType="cn.gdqy.aotw.pojo.GroupmemberKey" >
-    insert into groupmember (userName, group_id)
-    values (#{username,jdbcType=VARCHAR}, #{groupId,jdbcType=INTEGER})
+    insert into groupmember (userName, groupId)
+    values (#{username,jdbcType=VARCHAR}, #{groupid,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="cn.gdqy.aotw.pojo.GroupmemberKey" >
     insert into groupmember
@@ -101,16 +101,16 @@
       <if test="username != null" >
         userName,
       </if>
-      <if test="groupId != null" >
-        group_id,
+      <if test="groupid != null" >
+        groupId,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="username != null" >
         #{username,jdbcType=VARCHAR},
       </if>
-      <if test="groupId != null" >
-        #{groupId,jdbcType=INTEGER},
+      <if test="groupid != null" >
+        #{groupid,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -126,8 +126,8 @@
       <if test="record.username != null" >
         userName = #{record.username,jdbcType=VARCHAR},
       </if>
-      <if test="record.groupId != null" >
-        group_id = #{record.groupId,jdbcType=INTEGER},
+      <if test="record.groupid != null" >
+        groupId = #{record.groupid,jdbcType=INTEGER},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -137,7 +137,7 @@
   <update id="updateByExample" parameterType="map" >
     update groupmember
     set userName = #{record.username,jdbcType=VARCHAR},
-      group_id = #{record.groupId,jdbcType=INTEGER}
+      groupId = #{record.groupid,jdbcType=INTEGER}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>

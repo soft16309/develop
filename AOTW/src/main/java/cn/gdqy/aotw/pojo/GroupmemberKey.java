@@ -3,7 +3,7 @@ package cn.gdqy.aotw.pojo;
 public class GroupmemberKey {
     private String username;
 
-    private Integer groupId;
+    private Integer groupid;
 
     public String getUsername() {
         return username;
@@ -13,11 +13,11 @@ public class GroupmemberKey {
         this.username = username == null ? null : username.trim();
     }
 
-    public Integer getGroupId() {
-        return groupId;
+    public Integer getGroupid() {
+        return groupid;
     }
 
-    public void setGroupId(Integer groupId) {
-        this.groupId = groupId;
+    public void setGroupid(Integer groupid) {
+        this.groupid = groupid;
     }
 }

@@ -104,16 +104,7 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="cn.gdqy.aotw.pojo.Group" >
-    insert into group (id, userName, name, 
-      scale, sort, description, 
-      address, status, image, 
-      createTime)
-    values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
-      #{scale,jdbcType=INTEGER}, #{sort,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, 
-      #{address,jdbcType=VARCHAR}, #{status,jdbcType=TINYINT}, #{image,jdbcType=VARCHAR}, 
-      #{createtime,jdbcType=TIMESTAMP})
-  </insert>
+  
   <insert id="insertSelective" parameterType="cn.gdqy.aotw.pojo.Group" >
     insert into group
     <trim prefix="(" suffix=")" suffixOverrides="," >
@@ -287,4 +278,19 @@
       createTime = #{createtime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  
+  <insert id="insert" parameterType="cn.gdqy.aotw.pojo.Group" >
+  	<selectKey order="AFTER" keyProperty="id">
+  		SELECT LAST_INSERT_ID()
+  	</selectKey>
+  
+    insert into group (userName, name, 
+      scale, sort, description, 
+      address, status, image, 
+      createTime)
+    values (#{username,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{scale,jdbcType=INTEGER}, #{sort,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{status,jdbcType=TINYINT}, #{image,jdbcType=VARCHAR}, 
+      #{createtime,jdbcType=TIMESTAMP})
+  </insert>
 </mapper>
