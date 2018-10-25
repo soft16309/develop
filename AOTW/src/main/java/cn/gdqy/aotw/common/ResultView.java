@@ -19,6 +19,10 @@ public class ResultView {
 		this.data.put(key, value);
 	}
 	
+	public Object getData(String key) {
+		return this.data.get(key);
+	}
+	
 	public String getIsOk() {
 		return isOk;
 	}

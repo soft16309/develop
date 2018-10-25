@@ -13,7 +13,7 @@ public interface UserService {
 	ResultView update(User user);
 	ResultView updatePassword(String userName, String password);
 	ResultView updateLocation(String userName, String location);
-	ResultView fuzzySearchByName(String userName);
+	ResultView fuzzySearchByUserName(String userName);
 	ResultView updateUserStatus(String userName, Byte status);
 	ResultView findAllJoinGroups(String userName);
 	ResultView findAllCreateGroups(String userName);

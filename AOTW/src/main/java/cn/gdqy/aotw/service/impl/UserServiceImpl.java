@@ -127,12 +127,13 @@ public class UserServiceImpl implements UserService {
 		return result;
 	}
 
-	public ResultView fuzzySearchByName(String username) {
+	@Transactional(propagation=Propagation.SUPPORTS)
+	public ResultView fuzzySearchByUserName(String username) {
 		ResultView result = new ResultView();
 		UserExample example = new UserExample();
 		example.setOrderByClause("userName");
 		Criteria criteria =  example.createCriteria();
-		criteria.andUsernameLike(username);
+		criteria.andUsernameLike("%"+username+"%");
 		List<User> userList = userMapper.selectByExample(example);
 		result.putData("userList", userList);
 		return result;
@@ -147,6 +148,7 @@ public class UserServiceImpl implements UserService {
 		return result;
 	}
 	
+	@Transactional(propagation=Propagation.SUPPORTS)
 	public ResultView findAllJoinGroups(String userName) {
 		ResultView result = new ResultView();
 		GroupmemberExample example = new GroupmemberExample();
@@ -168,13 +170,14 @@ public class UserServiceImpl implements UserService {
 		return result;
 	}
 	
+	@Transactional(propagation=Propagation.SUPPORTS)
 	public ResultView findAllCreateGroups(String userName) {
 		ResultView result = new ResultView();
 		GroupExample example = new GroupExample();
 		example.setOrderByClause("name");
 		example.createCriteria().andUsernameEqualTo(userName);
 		List<Group> groupList = groupMapper.selectByExample(example);
-		result.putData("groupList", groupList);;
+		result.putData("groupList", groupList);
 		return result;
 	}
 }
