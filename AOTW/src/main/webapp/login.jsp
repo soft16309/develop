@@ -7,14 +7,15 @@
 		<link rel="stylesheet" type="text/css" href="css/login.css"/>
 		<script src="js/jquery-1.7.2.min.js"></script>
 		<script type="text/javascript" src="js/jquery.form.js" ></script>
-		<script type="text/javascript" src="login.js"></script>
+		<script type="text/javascript" src="login.js?v=2"></script>
+		<script type="text/javascript">var contextPath = "${pageContext.request.contextPath}";</script>
 	</head>
 	<body>
 		<div id="main">
 			<div id="header"><img src="img/header.png" /></div>
 			<div><img src="img/backgroud.png" /></div>
 			<div id="form-div">
-				<form>
+				<form id="login-form">
 					<table>
 						<tr>
 							<td>用户名：</td>

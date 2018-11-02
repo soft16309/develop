@@ -22,9 +22,17 @@ body {
 }
 
 #form-div table {
-	width: 65%;
+	width: 86%;
 	margin: 20px auto;
 	margin-bottom: 30px;
+}
+#form-div table td{
+	text-align: left;
+}
+
+#form-div table tr td:first-child {
+	width: 120px;
+	text-align: center;
 }
 
 #menu button {

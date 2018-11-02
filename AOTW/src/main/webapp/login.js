@@ -19,24 +19,24 @@ function init() {
 			$(this).next('span.tip').text("");
 		}
 	})
-	
+	debugger;
 	var buttons = $("#menu button");
-	var regBtn = buttons[0];
-	var loginBtn = buttons[1];
-	regBtn.click(function(){
+	var $regBtn = $(buttons[0]);
+	var $loginBtn = $(buttons[1]);
+	$regBtn.click(function(){
 		window.location = "register.jsp";
 	})
-	loginBtn.click(function(){
+	$loginBtn.click(function(){
 		if (!validate()) {
 			return;
 		}
 		
-		$("#form-div").ajaxSubmit({
-			url : "${pageContext.request.contextPath}/user/login.do",
+		$("#login-form").ajaxSubmit({
+			url : contextPath + "/user/login.do",
 			type : "post",
 			success : function(r) {
 				if (r.isOk == 'Y') {
-					window.location = "index.jsp";
+					window.location = contextPath + "/page/toIndex.do";
 				} else {
 					alert(r.msg);
 				}

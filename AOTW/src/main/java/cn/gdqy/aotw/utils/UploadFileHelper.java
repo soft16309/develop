@@ -8,7 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class UploadFileHelper {
 	private final static String SAVE_PATH = "/upload";
-	private final static String DEFAULT_FILE_URL = "/upload/default.jpg";
+	public final static String DEFAULT_FILE_URL = "/img/defaultImg.png";
 
 	/**
 	 * 保存上传文件

@@ -73,6 +73,7 @@ public class UserServiceImpl implements UserService {
 		user.setStatus(GlobalConstant.UserStatus.ENABLE);
 		user.setRegistertime(new Date());
 		user.setPassword(new MD5Code().getMD5ofStr(user.getPassword()));
+		user.setImage(UploadFileHelper.DEFAULT_FILE_URL);
 		userMapper.insert(user);
 		return result;
 	}

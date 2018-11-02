@@ -320,4 +320,10 @@
       registerTime = #{registertime,jdbcType=TIMESTAMP}
     where userName = #{username,jdbcType=VARCHAR}
   </update>
+  
+  <select id="getGroupOwner" parameterType="int" resultMap="BaseResultMap">
+  	select user.* 
+  	from user left join `group` g on user.userName = g.userName
+  	where g.id = #{groupId}
+  </select>
 </mapper>

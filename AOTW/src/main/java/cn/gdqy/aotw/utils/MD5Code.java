@@ -1,4 +1,4 @@
-﻿package cn.gdqy.aotw.utils;
+package cn.gdqy.aotw.utils;
 
 public class MD5Code {
 	/*

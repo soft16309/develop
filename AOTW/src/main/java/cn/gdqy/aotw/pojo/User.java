@@ -21,7 +21,7 @@ public class User {
 
     private Byte isadmin;
 
-    private String location;
+    private String location;	//保存json格式数据{lng:lng, lat:lat}
 
     private String image;
 

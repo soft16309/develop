@@ -3,7 +3,6 @@ package cn.gdqy.aotw.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -25,9 +24,15 @@ public class UserController {
 	}
 	
 	@ResponseBody
+	@RequestMapping("quickRegister")
+	public ResultView register(User user) {
+		return userService.register(user);
+	}
+	
+	@ResponseBody
 	@RequestMapping("login")
-	public ResultView login(String userName, String password) {
-		return userService.login(userName, password);
+	public ResultView login(String username, String password) {
+		return userService.login(username, password);
 	}
 	
 }

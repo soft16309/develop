@@ -15,6 +15,7 @@ import cn.gdqy.aotw.mapper.UserMapper;
 import cn.gdqy.aotw.pojo.GroupmemberExample;
 import cn.gdqy.aotw.pojo.GroupmemberKey;
 import cn.gdqy.aotw.pojo.User;
+import cn.gdqy.aotw.pojo.UserExample;
 import cn.gdqy.aotw.service.GroupMemberService;
 
 @Service
@@ -45,6 +46,7 @@ public class GroupMemberServiceImpl implements GroupMemberService {
 			});
 			result.putData("userList", userList);
 		}
+		result.putData("groupOwner", userMapper.getGroupOwner(groupId));
 		return result;
 	}
 

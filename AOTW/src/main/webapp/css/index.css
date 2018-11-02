@@ -6,7 +6,7 @@ body {
 }
 #main {
 	width: 1000px;
-	margin: 20px auto;
+	margin: 40px auto;
 }
 #header-left {
 	float: left;
@@ -79,6 +79,9 @@ body {
 .group-tree-head {
 	font-size: 14px;
 }
+.groud-tree-head_content {
+	cursor:default;
+}
 .icon {
 	float: left;
 	display: block;
@@ -107,4 +110,38 @@ ul.group-tree-content li{
 }
 ul.group-tree-content li:hover {
 	background: #f6d72a;
+}
+
+#center-right {
+	padding-left: 10px;
+	padding-top: 10px;
+}
+
+#mapContainer {
+	width: 825px;
+	height: 420px;
+}
+
+.sharp {
+	display: block;
+	width: 0;
+	height: 0;
+	border-width: 8px;
+	border-style: solid;
+	border-color: #007AFF transparent transparent transparent;
+	margin: 0 auto;
+}
+
+.middle {
+	width: 40px;
+	height: 40px;
+	background: #007AFF;
+	border-radius: 8px;
+	text-align: center;
+	padding: 6px;
+}
+
+.middle img {
+	width: 100%;
+	height: 100%;
 }

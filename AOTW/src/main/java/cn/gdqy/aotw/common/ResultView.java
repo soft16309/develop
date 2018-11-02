@@ -9,7 +9,7 @@ public class ResultView {
 	private String isOk;
 	private String msg;
 	private Map<String, Object> data;
-	
+
 	public ResultView() {
 		this.isOk = SUCCESS;
 		this.data = new HashMap<String, Object>();
@@ -39,4 +39,11 @@ public class ResultView {
 		this.msg = msg;
 	}
 
+	public Map<String, Object> getData() {
+		return data;
+	}
+
+	public void setData(Map<String, Object> data) {
+		this.data = data;
+	}
 }
