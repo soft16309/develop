@@ -1,4 +1,4 @@
-﻿package cn.gdqy.aotw.service.impl;
+package cn.gdqy.aotw.service.impl;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -40,19 +40,15 @@ public class UserServiceImpl implements UserService {
 	private GroupmemberMapper groupmemberMapper;
 	
 	@Transactional(propagation=Propagation.SUPPORTS)
-	public ResultView login(String userName, String password) {
+	public ResultView login(String username, String password) {
 		ResultView result = new ResultView();
 		password = new MD5Code().getMD5ofStr(password);
-		UserExample example = new UserExample();
-		Criteria criteria = example.createCriteria();
-		criteria.andUsernameEqualTo(userName).andPasswordEqualTo(password);
-		List<User> list = userMapper.selectByExample(example);
-		if (list == null || list.size() < 1) {
+		User user = findUser(username, password);
+		if (user == null) {
 			result.setIsOk(ResultView.ERROR);
 			result.setMsg("登录名或密码错误！");
 			return result;
 		}
-		User user = list.get(0);
 		if (GlobalConstant.UserStatus.ENABLE.equals(user.getStatus())) {
 			WebHelper.getSession().setAttribute("user", user);			
 		} else {
@@ -60,6 +56,23 @@ public class UserServiceImpl implements UserService {
 			result.setMsg("当前账号已被禁用!");
 		}
 		return result;
+	}
+	
+	@Transactional(propagation=Propagation.SUPPORTS)
+	public User findUser(String username, String password) {
+		UserExample example = new UserExample();
+		Criteria criteria = example.createCriteria();
+		criteria.andUsernameEqualTo(username).andPasswordEqualTo(password);
+		List<User> list = userMapper.selectByExample(example);
+		if (list == null || list.size() < 1) {
+			return null;
+		}
+		return list.get(0);
+	}
+	
+	@Transactional(propagation=Propagation.SUPPORTS)
+	public User findUser(String username) {
+		return userMapper.selectByPrimaryKey(username);
 	}
 	
 	public ResultView register(User user) {
@@ -98,6 +111,8 @@ public class UserServiceImpl implements UserService {
 	public ResultView updateNoPassword(User user) {
 		ResultView result = new ResultView();
 		userMapper.updateByPrimaryKeySelective(user);
+		user = findUser(WebHelper.getCurrentUser().getUsername(), WebHelper.getCurrentUser().getPassword());
+		WebHelper.getSession().setAttribute("user", user);
 		return result;
 	}
 
@@ -110,6 +125,15 @@ public class UserServiceImpl implements UserService {
 		return result;
 	}
 
+	public ResultView updateNoPassword(User user, MultipartFile file) {
+		if (file != null) {
+			String imageUrl = UploadFileHelper.saveFile(file);
+			user.setImage(imageUrl);
+		}
+		ResultView result = updateNoPassword(user);
+		return result;
+	}
+	
 	public ResultView updatePassword(String userName, String password) {
 		ResultView result = new ResultView();
 		User user = new User();

@@ -40,4 +40,21 @@
     <filter-name>characterEncodingFilter</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
+  
+  <filter>
+  	<filter-name>authorityFilter</filter-name>
+  	<filter-class>cn.gdqy.aotw.filter.AuthorityFilter</filter-class>
+  	<init-param>
+  		<param-name>excludeUrls</param-name>
+  		<param-value>/login.jsp,/register.jsp,/user/register.do,/user/login.do</param-value>
+  	</init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>authorityFilter</filter-name>
+    <url-pattern>*.do</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>authorityFilter</filter-name>
+    <url-pattern>*.jsp</url-pattern>
+  </filter-mapping>
 </web-app>

@@ -2,14 +2,13 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
-	<head>
+	<head lang="en">
 		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
 		<title>天下纵横</title>
 		<%@include file="include/include.jsp" %>
+		<script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=e8496e8ac4b0f01100b98da5bde96597"></script>
 		<link rel="stylesheet" type="text/css" href="<%=contextPath%>/css/index.css"/>
-		<script type="text/javascript" src="<%=contextPath%>/js/jquery-1.7.2.min.js" ></script>
-  		<script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&amp;key=e8496e8ac4b0f01100b98da5bde96597"></script>
-		<script type="text/javascript" src="<%=contextPath%>/js/geolocation.js" ></script>
 		<script type="text/javascript" src="<%=currentPath%>/index.js?v=<%=version%>"></script>
 	</head>
 	<body>
@@ -19,8 +18,13 @@
 					<h3>欢迎您，${user.username }</h3>
 				</div>
 				<div id="header-right">
-					<input type="text" placeholder="搜索群" />
+					<input type="text" placeholder="搜索群" name="name" />
 					<button id="intoBtn">进入</button>
+					<div id="groupList" style="display:none;">
+						<ul>
+							
+						</ul>
+					</div>
 				</div>
 				<div style="clear: both;"></div>
 			</div>

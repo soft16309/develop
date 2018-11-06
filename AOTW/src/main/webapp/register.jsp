@@ -4,11 +4,10 @@
 <head>
 <meta charset="UTF-8">
 <title>注册</title>
-<link rel="stylesheet" type="text/css" href="css/register.css" />
-<script src="js/jquery-1.7.2.min.js"></script>
-<script type="text/javascript" src="js/jquery.form.js" ></script>
-<script type="text/javascript" src="js/common.js"></script>
-<script type="text/javascript" src="register.js"></script>
+<%@include file="include/include.jsp" %>
+<link rel="stylesheet" type="text/css" href="<%=contextPath %>/css/register.css" />
+<script type="text/javascript" src="<%=contextPath %>/js/jquery.form.js" ></script>
+<script type="text/javascript" src="<%=currentPath %>/register.js?v=<%=version %>"></script>
 </head>
 
 <body>
@@ -75,7 +74,7 @@
 				<div id="right-div">
 					<div>
 						<div id="image-div">
-							<img src="img/u16.png" /> <input type="file" name="file" />
+							<img src="img/defaultImg.png" /> <input type="file" name="file" />
 						</div>
 						<div id="label-image">
 							<span>头像</span>
@@ -84,7 +83,6 @@
 				</div>
 				<div style="clear: both;"></div>
 			</form>
-			]
 		</div>
 		<div id="bottom">
 			<button>提交注册</button>

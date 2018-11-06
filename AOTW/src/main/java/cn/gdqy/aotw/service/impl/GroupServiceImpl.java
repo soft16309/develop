@@ -74,4 +74,11 @@ public class GroupServiceImpl implements GroupService {
 		return result;
 	}
 
+	@Transactional(propagation=Propagation.SUPPORTS)
+	public ResultView getGroupById(Integer id) {
+		ResultView result = new ResultView();
+		Group group = groupMapper.selectByPrimaryKey(id);
+		result.putData("group", group);
+		return result;
+	}
 }

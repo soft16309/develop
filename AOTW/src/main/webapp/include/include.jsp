@@ -6,11 +6,13 @@
 	response.setHeader("Pragma","No-cache");  
 	response.setHeader("Cache-Control","no-cache");  
 	response.setDateHeader("Expires", 0);  
-	String currentPath = request.getRequestURI().substring(0, request.getRequestURI().lastIndexOf("/")) ;
+	String currentPath = request.getRequestURI().substring(0, request.getRequestURI().lastIndexOf("/"));
 	String contextPath = request.getContextPath()=="/"?"":request.getContextPath();
 	String version = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
 %>
 
+<script type="text/javascript" src="<%=contextPath %>/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="<%=contextPath %>/js/common.js"></script>
 <script>
 	var session = function(){
 		this.getCurrentUser = function() {

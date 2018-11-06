@@ -13,6 +13,7 @@ body {
 }
 #header-right {
 	float: right;
+	position: relative;
 }
 #header-right input {
 	border-radius: 3px;
@@ -122,7 +123,7 @@ ul.group-tree-content li:hover {
 	height: 420px;
 }
 
-.sharp {
+.sharp, .sharp-red {
 	display: block;
 	width: 0;
 	height: 0;
@@ -132,7 +133,11 @@ ul.group-tree-content li:hover {
 	margin: 0 auto;
 }
 
-.middle {
+.sharp-red {
+	border-color: #f00 transparent transparent transparent;
+}
+
+.middle, .middle-red {
 	width: 40px;
 	height: 40px;
 	background: #007AFF;
@@ -141,7 +146,36 @@ ul.group-tree-content li:hover {
 	padding: 6px;
 }
 
-.middle img {
+.middle-red {
+	background: #f00;
+}
+
+.middle img, .middle-red img {
 	width: 100%;
 	height: 100%;
+}
+
+#groupList {
+	font-size: 14px;
+	position: absolute;
+	z-index: 1;
+	top: 22;
+	width: 155px;
+	max-height: 80px;
+	background-color: #fff;
+}
+
+#groupList ul {
+	list-style: none;
+	margin: 0;
+	margin-top: 4px;
+	margin-left: -26px;
+}
+
+#groupList ul li {
+	padding: 2px 0;
+	width: 100%;
+}
+#groupList ul li:hover {
+	background-color: #F6D72A;
 }
