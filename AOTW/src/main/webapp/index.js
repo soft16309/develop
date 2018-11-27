@@ -14,6 +14,8 @@ $(function() {
 	initSearchMenu();
 	//初始化【进入】按钮
 	initIntoBtn();
+	//绑定管理员菜单点击事件
+	bindSystemManageMenuListener();
 });
 
 function getCurrentLocation() {
@@ -292,3 +294,20 @@ function createInfoWindow(content, user) {
 	return info;
 }
 
+function bindSystemManageMenuListener() {
+	$("#systemManage").click(function() {
+		$("#menuList").toggle();
+	});
+	var $ul = $("#menuList ul");
+	var menus = $ul.find("li");
+	console.log(menus)
+	var $groupManage = $(menus[0]);
+	$groupManage.click(function() {
+		window.location = contextPath + "/pages/admin/groupManage.jsp";
+	});
+	
+	var $userManage = $(menus[1]);
+	$userManage.click(function() {
+		window.location = contextPath + "/pages/admin/userManage.jsp";
+	});
+}

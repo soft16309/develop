@@ -35,6 +35,12 @@ public class GroupController {
 	}
 	
 	@ResponseBody
+	@RequestMapping("createGroupNoImage")
+	public ResultView createGroupNoImage(String username, Group group) {
+		return groupService.createGroup(username, group);
+	}
+	
+	@ResponseBody
 	@RequestMapping("fuzzySearchGroupsByName")
 	public ResultView fuzzySearchGroupsByName(String name) {
 		return groupService.fuzzySearchGroupsByName(name);
@@ -51,5 +57,54 @@ public class GroupController {
 	@RequestMapping("joinGroup")
 	public ResultView joinGroup(Integer groupId) {
 		return groupMemberService.addGroupMember(groupId, WebHelper.getCurrentUser().getUsername());
+	}
+	
+	@ResponseBody
+	@RequestMapping("inviteGroupMember")
+	public ResultView inviteGroupMember(String username, Integer groupId) {
+		return groupMemberService.addGroupMember(groupId, username);
+	}
+	
+	@ResponseBody
+	@RequestMapping("deleteGroupMembers")
+	public ResultView deleteGroupMembers(String usernames, Integer groupId) {
+		return groupMemberService.deleteGroupMembers(groupId, usernames.split(","));
+	}
+	
+	@ResponseBody
+	@RequestMapping("quitGroup")
+	public ResultView quitGroup(String username, Integer groupId) {
+		return groupMemberService.deleteGroupMember(groupId, username);
+	}
+	
+	@ResponseBody
+	@RequestMapping("getGroupById")
+	public ResultView getGroupById(Integer groupId) {
+		return groupService.getGroupById(groupId);
+	}
+	
+	@ResponseBody
+	@RequestMapping("dissolveGroup")
+	public ResultView dissolveGroup(Integer groupId) {
+		return groupService.dissolveGroup(groupId);
+	}
+	
+	@ResponseBody
+	@RequestMapping("updateGroupData")
+	public ResultView updateGroupData(Group group) {
+		return groupService.updateGroupData(group);
+	}
+	
+	@ResponseBody
+	@RequestMapping("updateGroupStatus")
+	public ResultView updateGroupStatus(Integer groupId, Byte status) {
+		return groupService.updateGroupStatus(groupId, status);
+	}
+	
+	@RequestMapping("groupManage")
+	public String groupManage(String name) {
+		ResultView result = groupService.fuzzySearchGroupsByName(name);
+		WebHelper.getHttpServletRequest().setAttribute("groupList", result.getData("groupList"));
+		return "/pages/admin/groupManage";
 	}
 }

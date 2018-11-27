@@ -1,7 +1,6 @@
 package cn.gdqy.aotw.utils;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.Random;
 
 import org.springframework.web.multipart.MultipartFile;
@@ -22,6 +21,10 @@ public class UploadFileHelper {
 		String realName = file.getOriginalFilename();
 		String extName = realName.substring(realName.lastIndexOf("."));
 		String path = WebHelper.getServletContext().getRealPath(SAVE_PATH);
+		File dir = new File(path);
+		if (!dir.exists()) {
+			dir.mkdirs();
+		}
 		String filename = genFileName() + extName;
 		File saveFile = new File(path, filename);
 		try {

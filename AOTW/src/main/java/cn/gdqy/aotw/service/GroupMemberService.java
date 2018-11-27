@@ -6,4 +6,5 @@ public interface GroupMemberService {
 	ResultView findAllGroupMember(Integer groupId);
 	ResultView addGroupMember(Integer groupId, String userName);
 	ResultView deleteGroupMember(Integer groupId, String userName);
+	ResultView deleteGroupMembers(Integer groupId, String[] userNames);
 }

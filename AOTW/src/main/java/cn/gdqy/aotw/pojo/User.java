@@ -4,8 +4,9 @@ import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-public class User {
-    private String username;
+public class User{
+ 
+	private String username;
 
     @JsonIgnore
     private String password;
@@ -20,10 +21,8 @@ public class User {
 
     private String address;
 
-    @JsonIgnore
     private Byte status;
 
-    @JsonIgnore
     private Byte isadmin;
 
     private String location;	//保存json格式数据{lng:lng, lat:lat}

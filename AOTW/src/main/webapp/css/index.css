@@ -155,7 +155,7 @@ ul.group-tree-content li:hover {
 	height: 100%;
 }
 
-#groupList {
+#groupList,#menuList {
 	font-size: 14px;
 	position: absolute;
 	z-index: 1;
@@ -164,18 +164,20 @@ ul.group-tree-content li:hover {
 	max-height: 80px;
 	background-color: #fff;
 }
-
-#groupList ul {
+#menuList {
+	width : 100px;
+}
+#groupList ul, #menuList ul {
 	list-style: none;
 	margin: 0;
 	margin-top: 4px;
 	margin-left: -26px;
 }
 
-#groupList ul li {
+#groupList ul li, #menuList ul li {
 	padding: 2px 0;
 	width: 100%;
 }
-#groupList ul li:hover {
+#groupList ul li:hover, #menuList ul li:hover {
 	background-color: #F6D72A;
 }

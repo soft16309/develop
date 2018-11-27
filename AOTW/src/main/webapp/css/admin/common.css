@@ -1,0 +1,54 @@
+* {
+	margin : 0;
+	padding : 0;
+}
+#main{
+	width : 1000px;
+	margin : 50px auto;
+	padding : 20px auto;
+	background-color: #e6e6ff;
+	text-align : center;
+}
+#header {
+	margin: 20px auto;
+}
+#header h1 {
+	margin-bottom : 10px;
+	padding-top : 10px;
+	text-align : center;
+}
+#resultList {
+	height : 420px;	
+}
+.swiper-slide {
+	text-align : left;
+	padding : 5% 5%;
+}
+.item {
+	width : 18%;
+	text-align : center;
+	float : left;
+	margin-bottom : 20px;
+}
+.item img{
+	width : 80px;
+	height : 80px;
+}
+.item p {
+	margin : 5px auto;
+	font-size : 14px;
+}
+.item button {
+	width : 40px;
+	height : 24px;
+	border : 1px solid #007AFF;
+	background-color: #007AFF;
+	border-radius : 3px;
+	color : #fff;
+}
+.item button[disabled] {
+	opacity : 0.5;
+}
+#searchDiv {
+	margin-bottom : 5px;
+}

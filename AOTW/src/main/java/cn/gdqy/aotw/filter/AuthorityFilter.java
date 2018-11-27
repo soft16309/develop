@@ -15,8 +15,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import cn.gdqy.aotw.pojo.User;
 
-
-
 public class AuthorityFilter implements Filter  {
 	private List<String> excludeUrls;
 	@Override

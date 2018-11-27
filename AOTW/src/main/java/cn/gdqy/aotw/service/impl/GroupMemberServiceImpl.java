@@ -1,6 +1,7 @@
 package cn.gdqy.aotw.service.impl;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -15,7 +16,6 @@ import cn.gdqy.aotw.mapper.UserMapper;
 import cn.gdqy.aotw.pojo.GroupmemberExample;
 import cn.gdqy.aotw.pojo.GroupmemberKey;
 import cn.gdqy.aotw.pojo.User;
-import cn.gdqy.aotw.pojo.UserExample;
 import cn.gdqy.aotw.service.GroupMemberService;
 
 @Service
@@ -39,7 +39,7 @@ public class GroupMemberServiceImpl implements GroupMemberService {
 				User user = userMapper.selectByPrimaryKey(e.getUsername());
 				userList.add(user);
 			}
-			userList.sort(new Comparator<User>() {
+			Collections.sort(userList, new Comparator<User>() {
 				public int compare(User o1, User o2) {
 					return o1.getUsername().compareTo(o2.getUsername());
 				}
@@ -52,6 +52,15 @@ public class GroupMemberServiceImpl implements GroupMemberService {
 
 	public ResultView addGroupMember(Integer groupId, String userName) {
 		ResultView result = new ResultView();
+		GroupmemberExample example = new GroupmemberExample();
+		example.createCriteria().andGroupidEqualTo(groupId).andUsernameEqualTo(userName);
+		List<GroupmemberKey> groupmemberKeys = groupmemberMapper.selectByExample(example);
+		if (groupmemberKeys != null && !groupmemberKeys.isEmpty()) {
+			result.setIsOk(ResultView.ERROR);
+			result.setMsg("该成员已经在群聊里了，不能重复添加！");
+			return result;
+		}
+		
 		GroupmemberKey groupmemberKey = new GroupmemberKey();
 		groupmemberKey.setGroupid(groupId);
 		groupmemberKey.setUsername(userName);
@@ -68,4 +77,17 @@ public class GroupMemberServiceImpl implements GroupMemberService {
 		return result;
 	}
 	
+	public ResultView deleteGroupMembers(Integer groupId, String[] userNames) {
+		ResultView result = new ResultView();
+		if (userNames == null || userNames.length < 1) {
+			return result;
+		}
+		GroupmemberKey groupmemberKey = new GroupmemberKey();
+		groupmemberKey.setGroupid(groupId);
+		for (String userName : userNames) {
+			groupmemberKey.setUsername(userName);
+			groupmemberMapper.deleteByPrimaryKey(groupmemberKey);
+		}
+		return result;
+	}
 }

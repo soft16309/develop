@@ -12,4 +12,5 @@ public interface GroupService {
 	ResultView updateGroupStatus(Integer groupId, Byte status);
 	ResultView fuzzySearchGroupsByName(String name);
 	ResultView getGroupById(Integer id);
+	ResultView createGroup(String userName, Group group);
 }

@@ -14,7 +14,7 @@
            http://www.springframework.org/schema/tx/spring-tx.xsd">
            
     <context:component-scan base-package="cn.gdqy.aotw.service" />
-    <context:property-placeholder location="classpath:db.properties" />
+    <context:property-placeholder location="classpath:resource/*.properties" />
     <tx:annotation-driven transaction-manager="transactionManager" />
     
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">

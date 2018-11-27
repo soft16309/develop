@@ -8,7 +8,7 @@
 		<title>天下纵横</title>
 		<%@include file="include/include.jsp" %>
 		<script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=e8496e8ac4b0f01100b98da5bde96597"></script>
-		<link rel="stylesheet" type="text/css" href="<%=contextPath%>/css/index.css"/>
+		<link rel="stylesheet" type="text/css" href="<%=contextPath%>/css/index.css?v=<%=version%>"/>
 		<script type="text/javascript" src="<%=currentPath%>/index.js?v=<%=version%>"></script>
 	</head>
 	<body>
@@ -18,6 +18,15 @@
 					<h3>欢迎您，${user.username }</h3>
 				</div>
 				<div id="header-right">
+					<c:if test="${user.isadmin==1 }">
+						<button id="systemManage">系统管理</button>
+						<div id="menuList" style="display:none;">
+							<ul>
+								<li>群管理</li>
+								<li>用户管理</li>
+							</ul>
+						</div>
+					</c:if>
 					<input type="text" placeholder="搜索群" name="name" />
 					<button id="intoBtn">进入</button>
 					<div id="groupList" style="display:none;">

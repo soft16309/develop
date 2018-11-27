@@ -18,6 +18,7 @@ import cn.gdqy.aotw.pojo.GroupExample;
 import cn.gdqy.aotw.pojo.GroupmemberExample;
 import cn.gdqy.aotw.service.GroupService;
 import cn.gdqy.aotw.utils.UploadFileHelper;
+import cn.gdqy.aotw.utils.WebHelper;
 
 @Service
 @Transactional
@@ -32,6 +33,15 @@ public class GroupServiceImpl implements GroupService {
 		ResultView result = new ResultView();
 		String url = UploadFileHelper.saveFile(imageFile);
 		group.setImage(url);
+		group.setUsername(userName);
+		group.setCreatetime(new Date());
+		group.setStatus(GlobalConstant.GroupStatus.ENABLE);
+		groupMapper.insert(group);
+		return result;
+	}
+	
+	public ResultView createGroup(String userName, Group group) {
+		ResultView result = new ResultView();
 		group.setUsername(userName);
 		group.setCreatetime(new Date());
 		group.setStatus(GlobalConstant.GroupStatus.ENABLE);
@@ -56,10 +66,15 @@ public class GroupServiceImpl implements GroupService {
 
 	public ResultView updateGroupStatus(Integer groupId, Byte status) {
 		ResultView result = new ResultView();
-		Group group = new Group();
-		group.setId(groupId);
-		group.setStatus(status);
-		groupMapper.updateByPrimaryKeySelective(group);
+		if (WebHelper.getCurrentUser().getIsadmin().equals(GlobalConstant.UserRole.ADMIN)) {
+			Group group = new Group();
+			group.setId(groupId);
+			group.setStatus(status);
+			groupMapper.updateByPrimaryKeySelective(group);
+		} else {
+			result.setIsOk(ResultView.ERROR);
+			result.setMsg("抱歉，你没有权限！");
+		}
 		return result;
 	}
 
