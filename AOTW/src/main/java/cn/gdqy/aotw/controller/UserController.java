@@ -35,8 +35,8 @@ public class UserController {
 	
 	@ResponseBody
 	@RequestMapping("quickRegister")
-	public ResultView register(User user) {
-		return userService.register(user);
+	public ResultView register(String username, String password, String email) {
+		return userService.register(username, password, email);
 	}
 	
 	@ResponseBody

@@ -29,7 +29,7 @@ public class UserServiceTest {
 		user.setUsername("xiaoming");
 		user.setPassword("123456");
 		user.setEmail("xiaoming@qq.com");
-		service.register(user);
+		service.register(user.getUsername(), user.getPassword(), user.getEmail());
 	}
 
 	@Test

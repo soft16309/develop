@@ -66,7 +66,7 @@ function init() {
 
 function validate() {
 	if ($("input[name='name']").val().trim() == '') {
-		$("input[name='name']").next('span.tip').text('昵称不能为空！');
+		$("input[name='name']").next('span.tip').text('群名称不能为空！');
 		return false;
 	}
 	return true;

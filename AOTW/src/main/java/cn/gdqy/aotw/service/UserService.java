@@ -16,7 +16,7 @@ public interface UserService {
 	 * @return
 	 */
 	ResultView login(String username, String password, boolean isRemeber);
-	ResultView register(User user);
+	ResultView register(String username, String password, String email);
 	ResultView register(User user, MultipartFile file);
 	ResultView updateNoPassword(User user);
 	ResultView update(User user);

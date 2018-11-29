@@ -253,7 +253,11 @@ function initMap(position) {
 function initIntoBtn() {
 	$("#intoBtn").click(function() {
 		var groupId = $("#groupList ul:first-child").find("input[name='selectGroup']").val();
-		window.location = contextPath + "/group/toGroupData.do?groupId=" + groupId;
+		if (groupId) {
+			window.location = contextPath + "/group/toGroupData.do?groupId=" + groupId;
+		} else {
+			alert("找不到该群！");
+		}
 	});
 }
 

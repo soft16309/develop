@@ -199,8 +199,12 @@ public class UserServiceImpl implements UserService {
 		return userMapper.selectByPrimaryKey(username);
 	}
 
-	public ResultView register(User user) {
+	public ResultView register(String username, String password, String email) {
 		ResultView result = new ResultView();
+		User user = new User();
+		user.setUsername(username);
+		user.setPassword(password);
+		user.setEmail(email);
 		User oldUser = userMapper.selectByPrimaryKey(user.getUsername());
 		if (oldUser != null) {
 			result.setIsOk(ResultView.ERROR);
