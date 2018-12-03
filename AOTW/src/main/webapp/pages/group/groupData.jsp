@@ -68,8 +68,8 @@
 			<div style="clear: both;"></div>
 		</div>
 		<div id="bottom">
-			<button name="${group.username==user.username ? "ok" : "joinGroup" }">
-			${group.username==user.username ? "确定" : "加入群聊" }
+			<button name="${isUserInGroup ? "ok" : "joinGroup" }">
+			${isUserInGroup ? "确定" : "加入群聊" }
 			</button>
 		</div>
 	</div>

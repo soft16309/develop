@@ -49,6 +49,8 @@ public class GroupController {
 	@RequestMapping("toGroupData")
 	public String toGroupData(Integer groupId, Model model) {
 		ResultView result = groupService.getGroupById(groupId);
+		boolean isExist = groupMemberService.isUserInGroup(WebHelper.getCurrentUser().getUsername(), groupId);
+		model.addAttribute("isUserInGroup", isExist);
 		model.addAttribute("group", result.getData("group"));
 		return "pages/group/groupData";
 	}

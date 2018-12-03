@@ -90,4 +90,15 @@ public class GroupMemberServiceImpl implements GroupMemberService {
 		}
 		return result;
 	}
+	
+	public boolean isUserInGroup(String username, Integer groupId) {
+		boolean exist = false;
+		GroupmemberExample example = new GroupmemberExample();
+		example.createCriteria().andUsernameEqualTo(username).andGroupidEqualTo(groupId);
+		List<GroupmemberKey> groupMembers = groupmemberMapper.selectByExample(example);
+		if (groupMembers != null && groupMembers.size() > 0) {
+			exist = true;
+		}
+		return exist;
+	}
 }
